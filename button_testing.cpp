@@ -5,6 +5,7 @@
 #include <string>
 #include <cerrno>
 #include <cstring>
+#include <sys/ioctl.h>
 
 int main(int argc, char* argv[]) {
     // Usage: sudo ./ps4_buttons [/dev/input/eventX]
@@ -13,7 +14,7 @@ int main(int argc, char* argv[]) {
         device = argv[1];
     }
 
-    // Attempt to open the device
+    // Open the device
     int fd = open(device.c_str(), O_RDONLY);
     if (fd < 0) {
         std::cerr << "Error: Failed to open device '" << device << "': "
@@ -21,28 +22,32 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    // Grab device to ensure events aren't consumed elsewhere
+    if (ioctl(fd, EVIOCGRAB, 1) < 0) {
+        std::cerr << "Warning: Failed to grab device: " << std::strerror(errno) << std::endl;
+        // Not fatal; continue reading
+    }
+
     std::cout << "Listening for PS4 controller button presses on '" << device << "'..." << std::endl;
 
     struct input_event ev;
     while (true) {
-        // Read next event
         ssize_t n = read(fd, &ev, sizeof(ev));
         if (n == -1) {
+            if (errno == EINTR) continue;  // interrupted, retry
             std::cerr << "Error: Read failed: " << std::strerror(errno) << std::endl;
-            break;  // Exit loop on read error
+            break;
         } else if (n != sizeof(ev)) {
             std::cerr << "Warning: Unexpected event size: " << n << " bytes" << std::endl;
-            continue;  // Skip malformed event
+            continue;
         }
 
-        // Process only key press events (value == 1)
-        if (ev.type == EV_KEY) {
-            if (ev.value != 1 && ev.value != 0) {
-                // Skip auto-repeat or other values
-                continue;
-            }
-            bool pressed = (ev.value == 1);
+        // Debug: print all events
+        // std::cerr << "DBG type=" << ev.type << " code=" << ev.code << " value=" << ev.value << std::endl;
 
+        if (ev.type == EV_KEY) {
+            if (ev.value != 1 && ev.value != 0) continue; // filter only press/release
+            bool pressed = (ev.value == 1);
             switch (ev.code) {
                 case BTN_NORTH:   std::cout << (pressed ? "Triangle pressed" : "Triangle released") << std::endl; break;
                 case BTN_SOUTH:   std::cout << (pressed ? "Cross pressed"    : "Cross released")     << std::endl; break;
@@ -58,10 +63,10 @@ int main(int argc, char* argv[]) {
                 case BTN_THUMBL:  std::cout << (pressed ? "L3 pressed"       : "L3 released")        << std::endl; break;
                 case BTN_THUMBR:  std::cout << (pressed ? "R3 pressed"       : "R3 released")        << std::endl; break;
                 default:
-                    std::cerr << "Debug: Unhandled key code: " << ev.code << std::endl;
+                    std::cerr << "Debug: Unhandled key code: " << ev.code
+                              << " (type=" << ev.type << ", value=" << ev.value << ")" << std::endl;
             }
         }
-        // Could add EV_ABS handling here if needed
     }
 
     close(fd);
