@@ -1,2 +1,37 @@
-# Ignore documentation folder
-/docs/ 
+# Training data - should not be committed to git
+data/
+
+# Build artifacts
+build/
+*.o
+*.so
+*.dylib
+*.exe
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp 
