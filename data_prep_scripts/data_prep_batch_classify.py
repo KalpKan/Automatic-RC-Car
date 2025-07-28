@@ -3,6 +3,7 @@ import shutil
 import logging
 from data_prep_green_threshold import is_green_image
 from typing import List
+import sys
 
 IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.bmp', '.tiff'}
 
@@ -30,7 +31,11 @@ def batch_classify_images_recursive(raw_root: str, green_dir: str, non_green_dir
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
-    raw_root = 'data/raw_images/Fruit_Flower_Veg'
+    # Allow user to specify the root directory to process
+    if len(sys.argv) > 1:
+        raw_root = sys.argv[1]
+    else:
+        raw_root = 'data/raw_images/Fruit_Flower_Veg'
     green_dir = 'data/green'
     non_green_dir = 'data/non_green'
     batch_classify_images_recursive(raw_root, green_dir, non_green_dir) 

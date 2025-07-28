@@ -9,8 +9,8 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 # ENGINEERING: Broad HSV bounds for green (covers yellow-green to blue-green)
 # These can be further tuned or learned from data
-DEFAULT_LOWER_GREEN = np.array([35, 40, 40])   # H, S, V
-DEFAULT_UPPER_GREEN = np.array([85, 255, 255])
+DEFAULT_LOWER_GREEN = np.array([25, 120, 120])   # H, S, V (calibrated for neon green/yellow tennis ball)
+DEFAULT_UPPER_GREEN = np.array([45, 255, 255])
 
 WINDOW = 'Green Object Detection'
 

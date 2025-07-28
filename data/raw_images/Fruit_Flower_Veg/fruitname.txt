@@ -1,0 +1,117 @@
+Apple Braeburn
+Apple Crimson Snow
+Apple Golden
+Apple Golden Rotten
+Apple Granny Smith
+Apple Pink Lady
+Apple Red
+Apple Red Delicious
+Apple Red Yellow
+Apricot
+Avocado
+Avocado ripe
+Banana
+Banana Lady Finger
+Banana Red
+Beetroot
+Blueberry
+Cactus fruit
+Cantaloupe
+Cauliflower
+Cherry Black
+Cherry Rainier
+Cherry Red
+Cherry Yellow
+Chestnut
+Clementine
+Coconut
+Corn or Maize
+Corn or Maize Husk
+Cucumber Ripe
+Daisy
+Dandelion
+Dates
+Eggplant
+Fig
+Forest Nut
+Ginger Root
+Granadilla
+Grape Blue
+Grape Green
+Grape Pink
+Grape White
+Grapefruit Pink
+Grapefruit White
+Guava
+Hazelnut
+Huckleberry
+Kaki
+Kiwi
+Kohlrabi
+Kumquats
+Lemon
+Lemon Meyer
+Limes
+Lychee
+Mandarine
+Mango
+Mango Red
+Mangostan
+Maracuja
+Melon or Piel de Sapo
+Mulberry
+Nectarine
+Onion Red
+Onion White
+Orange
+Papaya
+Passion Fruit
+Peach
+Peach Flat
+Pear
+Pear Abate
+Pear Forelle
+Pear Kaiser
+Pear Monster
+Pear Red
+Pear Stone
+Pear Williams
+Pecan Nut
+Pepino
+Pepper Green
+Pepper Orange
+Pepper Red
+Pepper Yellow
+Physalis or Gooseberry
+Physalis or Gooseberry with Husk
+Pineapple
+Pineapple Mini
+Pitahaya Red
+Plum
+Pomegranate
+Pomelo Sweetie
+Potato Red
+Potato Sweet
+Potato White
+Quince
+Rambutan
+Raspberry
+Redcurrant
+Roses
+Salak
+Star fruit or Carambola
+Strawberry
+Sunflowers
+Tamarillo
+Tangelo
+Tomato Beefsteak
+Tomato Brandywine
+Tomato Campari
+Tomato Cherry Maroon
+Tomato Cherry Red
+Tomato Cherry Yellow
+Tomato Green Unripe
+Tomato Plum or Roma
+Tulips
+Walnut
+Watermelon
